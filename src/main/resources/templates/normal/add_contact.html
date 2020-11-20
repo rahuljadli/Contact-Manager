@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title th:text="${title}"></title>
+
+
+
+
+</head>
+
+<body>
+	<section>
+	<div th:if=" ${session.message} ">
+<div class="alert alert-success text-center">
+<span th:text=" ${session.message.message} "></span>
+<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+</div>
+
+	</div>
+		<div class="register">
+			<div class="row">
+				<div class="col-md-2 ">
+					<img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
+					<h3>Welcome</h3>
+
+				</div>
+				<div class="col-md-9 register-right">
+					<ul class="nav nav-tabs nav-justified active" id="myTab" role="tablist">
+						<li class="nav-item"><a class="nav-link " id="home-tab"
+							data-toggle="tab" href="#home" role="tab" aria-controls="home"
+							aria-selected="true">Add Contact</a></li>
+
+					</ul>
+					<div class="tab-content" id="myTabContent">
+						<div class="tab-pane fade show active" id="home" role="tabpanel"
+							aria-labelledby="home-tab">
+							<h3 class="register-heading">Add the contact details</h3>
+							<form action="" th:action="@{/user/addcontact}" method="POST" 
+							enctype="multipart/form-data"
+							th:object="${contact}"
+							 >
+							<div class="row register-form">
+								<div class="col-md-6">
+								
+									<div class="form-group">
+									
+										<input type="text" class="form-control"
+											placeholder="Name " 
+											name="contactName"
+											value="" />
+									</div>
+									<div class="form-group">
+										<input type="email" class="form-control"
+										placeholder="contactEmail" 
+											name="contactEmail"
+											 value="" />
+									</div>
+									<div class="form-group">
+										<input type="text" class="form-control"
+											placeholder="contactWork"
+											name="contactWork"
+											value="" />
+									</div>
+				<div class="form-group form-control-lg">
+    <label for="exampleFormControlFile1">Profile picture</label>
+    <input type="file" class="form-control-file" id="exampleFormControlFile1"
+    name="profilePic">
+  </div>
+									
+					</div>
+					<div class="col-md-6">
+					<div class="form-group">
+					<input type="text" class="form-control"
+					name="contactNickName"
+					placeholder="Nick name" value="" />
+					</div>
+					<div class="form-group">
+					<input type="text" minlength="10" maxlength="10"
+					name="contactNumber" class="form-control"
+					placeholder="Your Phone " value="" />
+					</div>
+					<div class="form-group">
+    
+   				 <textarea class="form-control" id="exampleFormControlTextarea1" 
+   			 		name="contactDesc"
+   			 		rows="3" placeholder="Description" >
+   			 		</textarea>
+  					</div>
+	
+			<input type="submit" class="btnRegister" value="Add" />
+			
+			</div>
+			</div>
+			
+			
+			</form>
+						</div>
+					</div>	
+				</div>
+			</div>
+		</div>
+		
+		<script >
+		$(document).ready(()=>{
+			$(".item").removeClass("active");
+			$("#add-link").addClass("active");
+			
+		});
+		
+		
+		</script>
+	</section>
+
+</body>
+
+</html>

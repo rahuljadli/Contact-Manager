@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" th:fragment="layout(content)">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="js/gulpfile.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title th:text="${title}"></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" integrity="sha512-HK5fgLBL+xu6dm/Ii3z4xhlSUyZgTT9tuc/hSrtw6uzJOvgRr2a9jyxxT1ely+B+xFAmJKVSTbpM/CuL7qxO8w==" crossorigin="anonymous" />
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  </head>
+ <link rel="stylesheet" href="" th:href="@{/css/simple-sidebar.css}" />
+ <link rel="stylesheet" href="" th:href="@{/css/style.css}" />
+  <body>
+   
+<nav class="navbar navbar-expand-xl navbar-inverse navbar1">
+
+<a class="navbar-brand" href="#">
+    <img src="" th:src="@{/images/Contactmanager.png}" alt="Logo" style="width:40px; height:35px;">
+    </a>
+  <div class="container">
+  
+    <div class="navbar-header font-weight-bold">
+      <a class="navbar-brand" href="#">SmartContactManager</a>
+    </div>
+    <ul class="nav navbar-nav ">
+      <li><a href="" th:href="@{/home}"><strong>HOME</strong></a></li>
+      
+    </ul>
+    
+    
+    <ul class="nav navbar-nav navbar-right">
+    
+      <li><a href="" th:href="@{/signup/}"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li><a href=" " th:href="@{/logout}"><span class="glyphicon glyphicon-log-in"></span> Logout</a></li>
+    </ul>
+    <div class="nav navbar-nav navbar-right">
+    <form class="navbar-form navbar-left" action="/action_page.php">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+      </div>
+      <button type="submit" class="btn btn-default">Submit</button>
+    </form>
+    </div>
+  </div>
+</nav>
+  
+  <!-- This is for the sidebar -->
+  <div class="sidebar">
+  <a class=""  id="home-link" href="#" th:href="@{/user/dashboard}"><i class="fas fa-home item"></i> Home</a>
+  <a href="#" id="view-link" th:href="@{/user/showcontact/0}"><i class="fas fa-address-book item"></i> View Contacts</a>
+  <a href="#" id="add-link"  th:href="@{/user/add_contact}"><i class="fas fa-id-card-alt item"></i> Add Contact</a>
+  <a href="#"  id="profile-link" th:href="@{/user/userProfile}"><i class="fas fa-user item"></i> Your Profile</a>
+  <a href="#" id="setting-link" th:href="@{/user/userSetting}"><i class="fas fa-user-cog item"></i> Settings</a>
+  <a href="#" th:href="@{/logout}"><i class="fas fa-sign-out-alt item"></i> Logout</a>
+</div>
+
+<div class="mainContent">
+
+
+<div  th:replace="${content}"></div>
+
+</div>
+
+<script>
+function deleteContact(cid){
+	
+	swal({
+		  title: "Are you sure?",
+		  text: "Contact will be deleted!",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+		  if (willDelete) {
+		    console.log(cid);
+			  window.location="/user/deleteContact/"+cid;
+			  
+			  
+		  } else {
+		    swal("Contact not deleted!");
+		  }
+		});
+}
+
+</script>
+
+
+  </body>
+</html>

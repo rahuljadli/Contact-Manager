@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.thymeleaf.org" th:replace="base::layout(~{::section})">
+
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<section>
+<div class="container ">
+
+	<div class="row ">
+	
+	<div class="col-lg-9 offset-md-1.5  ">
+	<div class="mycard mx-5">
+
+	
+	
+	<h1 class="text-center">Register Here</h1>
+	
+	<form action="" th:action="@{/registerUser}" method="post" th:object="${user}">
+	
+	
+	<div class="form-group">
+    <label for="exampleInputEmail1">User name</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" 
+    name="userName" 
+    aria-describedby="emailHelp" placeholder="Enter Name" required>
+     </div>
+  
+  
+  <div class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" 
+    name="userEmail"
+    aria-describedby="emailHelp" placeholder="Enter email" required>
+    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  </div>
+  
+  <div class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" 
+    name="userPassword"
+    placeholder="Password" required>
+  </div>
+  
+  
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Example textarea</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1"
+    name="userDesc" rows="3" required></textarea>
+  </div>
+  <div class="text-center">
+	<button type="reset" class="btn btn-danger">Reset</button>
+	
+	<button type="submit" class="btn btn-success">Submit</button>
+	</div>
+	</form>
+	
+	</div>
+	</div>
+	</div>
+
+</div>
+
+
+
+</section>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal/base::layout(~{::section})">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<title th:text="${title}"></title>
+
+
+
+
+</head>
+
+<body>
+	<section>
+	<div th:if="${contact}">
+	<div class="text-center">
+	<img src="" class="" th:src="@{'/images/'+${contact.contactProfile}}" style=" width:250px; height:210px;
+	border-radius:50%" alt="Profile Pic" />
+	<br>
+	<strong><span th:text="${contact.contactName}" style="font-size:20px"></span>
+	</strong>
+	
+	</div>
+	<table class="table">
+  <thead>
+    <tr >
+      <th scope="col" class="text-center">ID</th>
+      <th scope="col"  class="text-center"><span th:text=" 'SCM'+${contact.contactId}"></span></th>
+      
+    </tr>
+  </thead>
+  <tbody>
+    <tr >
+      <th scope="row" class="text-center">Email</th>
+      <td class="text-center"><span th:text="${contact.contactEmail}"></span></td>
+    </tr>
+   
+    <tr >
+      <th scope="row" class="text-center">Number</th>
+      <td class="text-center"><span th:text="${contact.contactNumber}"></span></td>
+    </tr>
+   
+   <tr >
+      <th scope="row" class="text-center">Work</th>
+      <td class="text-center"><span th:text="${contact.contactWork}"></span></td>
+    </tr>
+   
+   <tr >
+      <th scope="row" class="text-center">Description</th>
+      <td class="text-center"><span th:text="${contact.contactDesc}"></span></td>
+    </tr>
+   
+   
+   </tbody>
+</table>
+<div class="text-center">
+<a th:href="@{'/user/editContact/' +${contact.contactId}}">
+<button type="button" class="button button1">update</button>
+</a>
+<button 
+th:onclick="|deleteContact(${contact.contactId})|"
+type="button" class="button button3">Delete</button>
+</div>
+</div>
+<div th:unless="${contact}">
+<h1 class="text-center bg-danger text-white">You are not authorized to view this page</h1>
+</div>
+
+	</section>
+          
+</body>
+
+</html>
