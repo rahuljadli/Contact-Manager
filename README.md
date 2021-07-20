@@ -28,4 +28,3 @@
 #### Delete User
 ![Delete](https://github.com/rahuljadli/Contact-Manager/blob/master/screenshot/deleteUser.png)
 
-#### the Pickeld modal is provided
